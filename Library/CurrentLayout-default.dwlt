@@ -48,7 +48,7 @@ MonoBehaviour:
   m_MinSize: {x: 679, y: 492}
   m_MaxSize: {x: 14002, y: 14042}
   vertical: 0
-  controlID: 278
+  controlID: 61
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -95,8 +95,8 @@ MonoBehaviour:
     y: 0
     width: 379
     height: 598
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 201, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
@@ -220,7 +220,7 @@ MonoBehaviour:
   m_MinSize: {x: 403, y: 492}
   m_MaxSize: {x: 10001, y: 14042}
   vertical: 1
-  controlID: 100
+  controlID: 62
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -245,7 +245,7 @@ MonoBehaviour:
   m_MinSize: {x: 403, y: 221}
   m_MaxSize: {x: 8003, y: 4021}
   vertical: 0
-  controlID: 101
+  controlID: 63
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -370,20 +370,20 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Wallpers
+    - Assets/Scenes
   m_ViewMode: 1
   m_StartGridSize: 52
   m_LastFolders:
-  - Assets/Wallpers
+  - Assets/Scenes
   m_LastFoldersGridSize: 52
   m_LastProjectPath: C:\Users\Alexey Taran\Documents\GitHub\Tanks-battle
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 8c350000
-    m_LastClickedID: 13708
-    m_ExpandedIDs: 00000000583500005a3500005c35000000ca9a3b
+    m_SelectedIDs: 90350000
+    m_LastClickedID: 13712
+    m_ExpandedIDs: 0000000082350000843500008635000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -411,7 +411,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000583500005a3500005c350000
+    m_ExpandedIDs: 00000000823500008435000086350000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -534,9 +534,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: dae3ffff
-      m_LastClickedID: -7206
-      m_ExpandedIDs: 38e4ffff0ee7ffff2ce7ffff40e7ffffd4eaffffa2ebffff12eeffffe8f3ffff72fbfffff83300002a340000323400005e340000ae390000d0390000e0390000123a0000963e0000d03e0000d83e0000fe4300007644000086440000f64700003648000088480000d84a0000484b0000584b0000
+      m_SelectedIDs: 428e0000
+      m_LastClickedID: 36418
+      m_ExpandedIDs: 10d0ffff24d0ffff42d0ffff60d0ffff7cd0ffffa4d0ffffd2d0fffff0d0ffff04d1ffff22d1ffff3ed1fffffad3ffff18d4ffff2cd4ffff4ad4ffff66d4ffff4cd7ffff60d7ffff82d7ffffb0d7ffffd4d7ffff9cdaffff7cdbffffaadbffffdadbffff08dcffff30dcffff5edcffff7cdcffffbedcffffdcdcfffff0dcffff0eddffff2addffff48ddffff64ddffff82ddffff9eddffffbcddffffd8ddfffff6ddffff12deffff34deffff50deffff6edeffff8adeffffaaeaffffbeeaffffdceaffff0aebffff2cebffff5eebffff86ebffffb4ebffffd2ebffffeeebffff0cecffff2aecffff48ecffff5cecffff7aecffff98ecffffb6ecffffcaecffff44f0ffff58f0ffff76f0ffff92f0ffffb0f0ffffccf0ffffb4f3ffffd2f3ffffeef3ffff0cf4ffff28f4ffff46f4ffff62f4ffff8cf4ffff66f5ffff98f6ffff84f7ffff32f8ffff60faffff8efaffffaafaffff72fbffff023900003c39000044390000a43a00001c3b00002c3b00008e3b0000b03b0000fa3b0000423e0000643e0000ae3e0000c23e0000ee3f00002840000030400000784700009a470000e4470000f847000060480000d8480000e8480000604f0000d84f0000e84f00002251000062510000bc510000c0600000c8600000e2600000226100002c610000c47900003c7a00004c7a0000a47e0000127f00001c7f00002c7f000064840000808400009e840000a6840000328e0000aa8e0000ba8e0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -596,9 +596,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 514.262, y: 322.2853, z: -177.35628}
+    m_Target: {x: 464.02765, y: 336.9394, z: -36.625}
     speed: 2
-    m_Value: {x: 514.262, y: 322.2853, z: -177.35628}
+    m_Value: {x: 464.02765, y: 336.9394, z: -36.625}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -648,9 +648,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 695.5388
+    m_Target: 664.26636
     speed: 2
-    m_Value: 695.5388
+    m_Value: 664.26636
   m_Ortho:
     m_Target: 1
     speed: 2
