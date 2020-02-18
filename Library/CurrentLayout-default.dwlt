@@ -21,7 +21,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 6}
-  m_MinSize: {x: 875, y: 542}
+  m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
   m_Maximized: 1
 --- !u!114 &2
@@ -45,10 +45,10 @@ MonoBehaviour:
     y: 30
     width: 1920
     height: 988
-  m_MinSize: {x: 678, y: 492}
+  m_MinSize: {x: 679, y: 492}
   m_MaxSize: {x: 14002, y: 14042}
   vertical: 0
-  controlID: 54
+  controlID: 278
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: UnityConnectEditorWindow
+  m_Name: InspectorWindow
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -68,14 +68,14 @@ MonoBehaviour:
     y: 0
     width: 389
     height: 988
-  m_MinSize: {x: 276, y: 71}
-  m_MaxSize: {x: 4001, y: 4021}
-  m_ActualView: {fileID: 12}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
   - {fileID: 12}
-  m_Selected: 1
-  m_LastSelected: 0
+  m_Selected: 0
+  m_LastSelected: 1
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -151,7 +151,7 @@ MonoBehaviour:
     y: 0
     width: 1920
     height: 1038
-  m_MinSize: {x: 875, y: 542}
+  m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &7
 MonoBehaviour:
@@ -217,10 +217,10 @@ MonoBehaviour:
     y: 0
     width: 1531
     height: 988
-  m_MinSize: {x: 402, y: 492}
+  m_MinSize: {x: 403, y: 492}
   m_MaxSize: {x: 10001, y: 14042}
   vertical: 1
-  controlID: 99
+  controlID: 100
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -242,10 +242,10 @@ MonoBehaviour:
     y: 0
     width: 1531
     height: 598
-  m_MinSize: {x: 402, y: 221}
-  m_MaxSize: {x: 8002, y: 4021}
+  m_MinSize: {x: 403, y: 221}
+  m_MaxSize: {x: 8003, y: 4021}
   vertical: 0
-  controlID: 100
+  controlID: 101
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -294,10 +294,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 3131
+    x: 1276
     y: 72
-    width: 388
-    height: 967
+    width: 323
+    height: 747
   m_ViewDataDictionary: {fileID: 0}
   m_InitialOpenURL: https://public-cdn.cloud.unity3d.com/editor/production/cloud/hub
   m_GlobalObjectTypeName: 
@@ -370,20 +370,20 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes
+    - Assets/Wallpers
   m_ViewMode: 1
   m_StartGridSize: 52
   m_LastFolders:
-  - Assets/Scenes
+  - Assets/Wallpers
   m_LastFoldersGridSize: 52
-  m_LastProjectPath: C:\Users\Alexey Taran\Tanks Battle
+  m_LastProjectPath: C:\Users\Alexey Taran\Documents\GitHub\Tanks-battle
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: a0330000
-    m_LastClickedID: 13216
-    m_ExpandedIDs: 0000000098330000263a0000a63b000000ca9a3b
+    m_SelectedIDs: 8c350000
+    m_LastClickedID: 13708
+    m_ExpandedIDs: 00000000583500005a3500005c35000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -411,7 +411,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000098330000
+    m_ExpandedIDs: 00000000583500005a3500005c350000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -534,9 +534,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 0c350000
-      m_LastClickedID: 0
-      m_ExpandedIDs: 2048feff5048feff3049feff5849feff8649feff764afeffa84afeffc64afeffda4afefffc4afeff0e4dfeff2c4dfeff9e4dfeffcc4dfeffea4dfefffe4dfeff1c4efeff384efeff604efeff8e4efeffac4efeffc04efeffde4efefffa4efeff184ffeff7c4ffeff4a53feff2859feff2c5afeff7260feffd263feff367cfeff587cfeff807cfefff484feff0c85feff3485feff5c85feffb48afeff688bfeff548cfeff5a8dfeffae91feff4292feff1c98feffee98feff0299fefff4a1feffe2a7feff60a8feffc4a8fefff4a8feff1caffeff78affefff4bafeff26bdfeffacccfeffeaccfeff0ccdfeff38cdfeff26d1feff48d1feff9ef3feffa4f3feff9014ffff9e1affff221effff701effffde1efffffe1effff101fffff621fffff741fffff9c1fffffae1fffffba20ffffa826ffff2643ffffba43ffffbc43ffff4644ffff0645ffff0845ffff4856ffff4e56ffff2a57ffffa857ffffc457ffff2459ffffd659ffff2a5affff365affff425affff5a5affff1e5bffff2a5bffffc05bffff326dffff4470ffffb873ffffd879ffff347effff5681fffff687ffff168affffb28bffffa092ffff10c4ffff16c4ffff5ee3ffffc8e6ffffeef6fffffaf6ffffb6f7ffff72fbffff363300005033000066330000b4440000004d0000324d00003a4d0000c64d0000ae4e0000e04e0000e84e00000a55000044550000a45f0000e4600000e86100000a6200004c620000a6620000046300001c630000b0650000d2650000146600006666000080660000b8660000c2660000cc660000dc6600003e6b0000706b0000786b0000406c0000a66c0000b06c0000c06c0000227000002a7000004470000086700000c8700000027100007271000082710000d8730000fa7300003c740000b8740000ea74000028750000387500009a750000bc750000fe7500007a760000e0760000ea760000fa760000267c0000487c00008a7c0000027e0000727e0000827e0000c8800000388100004881000070830000e0830000028400004484000062850000a2850000ec850000b0890000e2890000ea8900004c9800006e980000b0980000f69b0000369c0000ea9c00000c9d00004e9d0000
+      m_SelectedIDs: dae3ffff
+      m_LastClickedID: -7206
+      m_ExpandedIDs: 38e4ffff0ee7ffff2ce7ffff40e7ffffd4eaffffa2ebffff12eeffffe8f3ffff72fbfffff83300002a340000323400005e340000ae390000d0390000e0390000123a0000963e0000d03e0000d83e0000fe4300007644000086440000f64700003648000088480000d84a0000484b0000584b0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -596,9 +596,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 507.5823, y: 329.90173, z: -448.43417}
+    m_Target: {x: 514.262, y: 322.2853, z: -177.35628}
     speed: 2
-    m_Value: {x: 490.81046, y: 339.9863, z: -445.2102}
+    m_Value: {x: 514.262, y: 322.2853, z: -177.35628}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -648,9 +648,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 855.1357
+    m_Target: 695.5388
     speed: 2
-    m_Value: 895.43005
+    m_Value: 695.5388
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -668,7 +668,7 @@ MonoBehaviour:
     m_FarClip: 10000
     m_DynamicClip: 1
     m_OcclusionCulling: 0
-  m_LastSceneViewRotation: {x: -0.0074999277, y: 0.0029999223, z: 0.00002248839, w: 0.99996674}
+  m_LastSceneViewRotation: {x: -0.08717229, y: 0.89959055, z: -0.21045254, w: -0.3726226}
   m_LastSceneViewOrtho: 0
   m_ReplacementShader: {fileID: 0}
   m_ReplacementString: 
