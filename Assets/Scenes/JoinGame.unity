@@ -954,6 +954,7 @@ GameObject:
   - component: {fileID: 504258251}
   - component: {fileID: 504258253}
   - component: {fileID: 504258252}
+  - component: {fileID: 504258254}
   m_Layer: 0
   m_Name: Panel
   m_TagString: Untagged
@@ -1027,6 +1028,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 504258250}
   m_CullTransparentMesh: 0
+--- !u!114 &504258254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 504258250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6137f8221a03d234eb17a63d474890d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &507001940
 GameObject:
   m_ObjectHideFlags: 0
@@ -1471,7 +1484,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 851456165}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 504258254}
+        m_MethodName: TryToJoin
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &851456165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1666,7 +1690,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1173654943}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 504258254}
+        m_MethodName: BackToMainMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1173654943
 MonoBehaviour:
   m_ObjectHideFlags: 0
