@@ -15,6 +15,12 @@ public class StartMenu : MonoBehaviour
         SceneManager.LoadScene(2);
     }
 
+
+    public void OpenControl()
+    {
+        SceneManager.LoadScene(6);
+    }
+
     public void OpenRecords()
     {
         SceneManager.LoadScene(4);
