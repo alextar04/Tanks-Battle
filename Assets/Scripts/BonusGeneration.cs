@@ -57,6 +57,6 @@ public class BonusGeneration : MonoBehaviour
     // Отрисовка сгенерированного бонуса
     void Start()
     {
-        InvokeRepeating("NewBonusGenerate", 5, 15);
+        InvokeRepeating("NewBonusGenerate", 30, 30);
     }
 }
