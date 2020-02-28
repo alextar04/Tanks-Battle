@@ -5,8 +5,8 @@ using UnityEngine;
 public class BonusGeneration : MonoBehaviour
 {
     // Размер поля
-    public float xLeft = -6.51f;
-    public float xRight = 3.44f;
+    public float xLeft = -6f;
+    public float xRight = 3f;
     public float zTop = -4.5f;
     public float zBot = 4.5f;
     public Vector3 generatedPosition;
