@@ -33,7 +33,7 @@ public class BonusGeneration : MonoBehaviour
         if (generatedBonus < 0.5)
             bonusPrefab = healthPrefab;
         else
-            bonusPrefab = damagePrefab;
+            bonusPrefab = healthPrefab;
         return bonusPrefab;
     }
 
@@ -57,6 +57,6 @@ public class BonusGeneration : MonoBehaviour
     // Отрисовка сгенерированного бонуса
     void Start()
     {
-        InvokeRepeating("NewBonusGenerate", 30, 30);
+        InvokeRepeating("NewBonusGenerate", 30, 60);
     }
 }
