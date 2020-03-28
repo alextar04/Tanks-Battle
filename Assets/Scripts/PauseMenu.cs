@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Photon.Pun;
 
-public class PauseMenu : MonoBehaviour
+public class PauseMenu : MonoBehaviourPunCallbacks
 {
 
 	public GameObject pauseObject;
@@ -11,6 +12,7 @@ public class PauseMenu : MonoBehaviour
     public void OpenStartMenu()
     {
         Time.timeScale = 1;
+        PhotonNetwork.Disconnect();
         SceneManager.LoadScene(0);
     }
 

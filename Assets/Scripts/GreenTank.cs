@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
+using Photon.Realtime;
 
-public class GreenTank : MonoBehaviour
+public class GreenTank : MonoBehaviourPunCallbacks
 {
     public float speed = 1f;
     public float rotationSpeed = 100f;
@@ -19,16 +21,33 @@ public class GreenTank : MonoBehaviour
     public float healthPointCurrent = 300;
     public float countDamage = 200;
     public bool alive = true;
-    private GameObject go;
+    // private GameObject go;
     GreenTank PositionController;
 
+    // Локальное представление объекта для клиента
+    public PhotonView photonView;
 
     // Первый кадр в отрисовке танка
     void Start()
     {
+        /*
         go = GameObject.Find("GreenTank");
         // Найти контроллер позиции танка
         PositionController = go.GetComponent<GreenTank>();
+        */  
+
+        // Клиент создает зеленый танк и им управляет (нет)
+            // Vector3 position = new Vector3(-5.556f, 7.051047f, -1.946f);
+            // GameObject objectGreen = PhotonNetwork.Instantiate(GreenPrefab.name, position, Quaternion.identity);
+            // objectGreen.transform.eulerAngles = new Vector3(0.0f, -90.0f, 0.0f);
+            //Debug.Log("Создал зеленого: ");
+            PositionController = GetComponent<GreenTank>();
+            // Debug.Log(PositionController);
+            // Инициализация локального предствления
+            photonView = GetComponent<PhotonView>();
+            // Debug.Log("Строка 50 -> " + photonView.ViewID);
+            //ViewID = photonView.ViewID;
+        //}
     }
 
     // Проверка на получение урона
@@ -71,7 +90,7 @@ public class GreenTank : MonoBehaviour
     void fire()
     {
         // Нажали на пробел -> произвести выстрел
-        if (Input.GetKey(KeyCode.P) && timer == 0 && alive)
+        if (Input.GetKey(KeyCode.Space) && timer == 0 && alive)
         {
             // Координаты дула
             Vector3 SpawnPoint = dulo.transform.position;
@@ -90,19 +109,27 @@ public class GreenTank : MonoBehaviour
 
     void FixedUpdate()
     {
-        // Слушатель прослушивает нажатую кнопку 
+        // Слушатель прослушивает нажатую кнопку
+        if (!photonView.IsMine) return;
         fire();
     }
 
 
     void Update()
     {
+        // Debug.Log(photonView + "   " +photonView.Owner);
+        // if (!photonView.IsMine) return;
+        // Debug.Log(photonView.ViewID);
+        // if (photonView.ViewID != 2001) return;
+        if (!photonView.IsMine) return;
+
         if (timer > 0)
             timer -= Time.deltaTime;
         else
             timer = 0;
 
-        if (alive && PositionController.transform.position.y < 7.2f){
+            // !PhotonNetwork.IsMasterClient
+        if (alive && (PositionController.transform.position.y < 7.2f)){
             if (Input.GetKey(KeyCode.UpArrow))
             {
                 transform.Translate(Vector3.forward * speed * Time.deltaTime);

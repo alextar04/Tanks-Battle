@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
+using Photon.Realtime;
 
 public class RedTank : MonoBehaviour
 {
@@ -22,6 +24,9 @@ public class RedTank : MonoBehaviour
     private GameObject go;
     RedTank PositionController;
 
+    // Локальное представление объекта для клиента
+    private PhotonView photonView;
+
 
     // Первый кадр в отрисовке танка
     void Start()
@@ -29,6 +34,9 @@ public class RedTank : MonoBehaviour
         go = GameObject.Find("RedTankMaus");
         // Найти контроллер позиции танка
         PositionController = go.GetComponent<RedTank>();
+        // Инициализация локального предствления
+        Debug.Log("Получил фоотонвиев красного танка");
+        photonView = GetComponent<PhotonView>();
     }
 
     // Проверка на получение урона
@@ -72,7 +80,7 @@ public class RedTank : MonoBehaviour
     void fire()
     {
         // Нажали на пробел -> произвести выстрел
-        if (Input.GetKey(KeyCode.Space) && timer == 0 && alive)
+        if (Input.GetKey(KeyCode.Space) && timer == 0 && alive && photonView.IsMine)
         {
             // Координаты дула
             Vector3 SpawnPoint = dulo.transform.position;
@@ -101,21 +109,22 @@ public class RedTank : MonoBehaviour
             timer -= Time.deltaTime;
         else
             timer = 0;
-
-        if (alive && PositionController.transform.position.y < 7.1f){
-            if (Input.GetKey(KeyCode.W))
+        
+            // PhotonNetwork.IsMasterClient
+        if (alive && (PositionController.transform.position.y < 7.1f) && photonView.IsMine){
+            if (Input.GetKey(KeyCode.UpArrow))
             {
                 transform.Translate(Vector3.right * speed * Time.deltaTime);
             }
-            if (Input.GetKey(KeyCode.S))
+            if (Input.GetKey(KeyCode.DownArrow))
             {
                 transform.Translate(Vector3.left * speed * Time.deltaTime);
             }
-            if (Input.GetKey(KeyCode.A))
+            if (Input.GetKey(KeyCode.LeftArrow))
             {
                 transform.Rotate(-1 * Vector3.up * rotationSpeed * Time.deltaTime);
             }
-            if (Input.GetKey(KeyCode.D))
+            if (Input.GetKey(KeyCode.RightArrow))
             {
                 transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime);
             }

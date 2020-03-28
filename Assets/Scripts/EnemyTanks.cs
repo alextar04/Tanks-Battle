@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.AI;
 using TMPro;
+using Photon.Pun;
+using Photon.Realtime;
 
 public class EnemyTanks : MonoBehaviour
 {
@@ -26,11 +28,13 @@ public class EnemyTanks : MonoBehaviour
     public float countDamage = 100;
     public Vector3 pivot = Vector3.up;
     public bool alive = true;
+    // Локальное представление объекта для клиента
+    public PhotonView photonView;
 
     // Сгенерированные вражеские танки
-    public List<GameObject> listEnemyTanks;
-    public int totalGenerated = 1;
-    public int totalMaxGenerated = 10;
+    // public List<GameObject> listEnemyTanks;
+    // public int totalGenerated = 1;
+    // public int totalMaxGenerated = 10;
 
     // Цель вражеских танков
     private GameObject RedTank;
@@ -42,18 +46,27 @@ public class EnemyTanks : MonoBehaviour
     // Отрисовка сгенерированного бонуса
     void Start()
     {
-    	if (enemyTankPrefab.gameObject.name == "EnemyTankBlack"){
-    		listEnemyTanks.Add(enemyTankPrefab);
-        	InvokeRepeating("NewEnemyTankGenerate", 5, 10);
-    	}
-    	RedTank = GameObject.Find("RedTankMaus");
-    	RedTankManipulator = RedTank.GetComponent<RedTank>();
-    	GreenTank = GameObject.Find("GreenTank");
-    	GreenTankManipulator = GreenTank.GetComponent<GreenTank>();
+        /*if (enemyTankPrefab.gameObject.name == "EnemyTankBlack"){
+    	       listEnemyTanks.Add(enemyTankPrefab);
+        	   InvokeRepeating("NewEnemyTankGenerate", 5, 10);
+
+    	   RedTank = GameObject.Find("RedTankMaus");
+    	   RedTankManipulator = RedTank.GetComponent<RedTank>();
+    	   GreenTank = GameObject.Find("GreenTankNetwork(Clone)");
+    	   GreenTankManipulator = GreenTank.GetComponent<GreenTank>();
+        }*/
+
+        RedTank = GameObject.Find("RedTankMaus");
+        RedTankManipulator = RedTank.GetComponent<RedTank>();
+         while (GreenTank == null){
+            GreenTank = GameObject.Find("GreenTankNetwork(Clone)");
+            GreenTankManipulator = GreenTank.GetComponent<GreenTank>();
+        }
+        photonView = GetComponent<PhotonView>();
     }
 
     // Проверка на получение урона
-    void OnCollisionEnter(Collision myTrigger){
+    /*void OnCollisionEnter(Collision myTrigger){
   		if (myTrigger.gameObject.name == "firstLevelBullet(Clone)")
   		{
     		healthPointCurrent -= 250;
@@ -116,7 +129,7 @@ public class EnemyTanks : MonoBehaviour
             listEnemyTanksClone.Clear();
             enemy.listEnemyTanks = listEnemyTanksClone;
         }
-    }
+    }*/
 
     // Произведение выстрела
     void fire()
@@ -139,14 +152,9 @@ public class EnemyTanks : MonoBehaviour
     }
 
 
-    public float xLeft = -6f;
-    public float xRight = 3f;
-    public float zTop = -4.5f;
-    public float zBot = 4.5f;
-    public Vector3 generatedPosition;
-
     void Update()
     {
+        if (!photonView.IsMine) return;
 
         if (timer > 0)
             timer -= Time.deltaTime;
@@ -156,11 +164,13 @@ public class EnemyTanks : MonoBehaviour
         // Слушатель прослушивает прошедшее время и стреляет по таймеру
         fire();
         int indexRemove = -1;
-        foreach (GameObject tank in listEnemyTanks){
+        GameObject enemyManager = GameObject.Find("EnemyTankManager");
+        ManagerEnemyTanks enemyManagerManipulator = enemyManager.GetComponent<ManagerEnemyTanks>();
+        foreach (GameObject tank in enemyManagerManipulator.ListEnemyTanks){
         	// Вызвать деструктор мертвого танка
         	EnemyTanks enemy = tank.GetComponent<EnemyTanks>();
         	 if (enemy.healthPointCurrent <= 0){
-                indexRemove = listEnemyTanks.IndexOf(tank);
+                indexRemove = enemyManagerManipulator.ListEnemyTanks.IndexOf(tank);
                 enemy.alive = false;
                 enemy.aiEnemyTank.enabled = false;
         	 	continue;
@@ -219,8 +229,7 @@ public class EnemyTanks : MonoBehaviour
 			        				else
 			        					rectangleToRun = GreenTankManipulator.transform.position;
 			        		}
-        	 		//rectangleToRun.x /= 2;
-        	 		//rectangleToRun.z /= 2;
+                    Debug.Log("Что-то сгенерированное вроде направляющего вектора движения: " + rectangleToRun);
         	 		enemy.aiEnemyTank.SetDestination(rectangleToRun);
         	 	}
         	 	else
@@ -228,16 +237,16 @@ public class EnemyTanks : MonoBehaviour
         	}
     	}
 
-    	GameObject mainEnemy = GameObject.Find("EnemyTankBlack");
-        EnemyTanks mainEnemyManipulator = mainEnemy.GetComponent<EnemyTanks>();
+    	// GameObject mainEnemy = GameObject.Find("EnemyTankBlackNetwork");
+        // EnemyTanks mainEnemyManipulator = mainEnemy.GetComponent<EnemyTanks>();
         // Если есть, что удалять, то удалить из потомков главного танка
         if (indexRemove != -1){
             // Удаление танка из массива потомков главного танка
             Debug.Log("Removing " + (indexRemove+1) + " танк");
-            mainEnemyManipulator.listEnemyTanks.RemoveAt(indexRemove);
+            enemyManagerManipulator.ListEnemyTanks.RemoveAt(indexRemove);
         }
         // Если нечего удалять - поражение
-        if (((mainEnemyManipulator.listEnemyTanks.Count == 0) && (mainEnemyManipulator.totalGenerated == mainEnemyManipulator.totalMaxGenerated)) ||
+        if (((enemyManagerManipulator.ListEnemyTanks.Count == 0) && (enemyManagerManipulator.totalGenerated == 10)) ||
         		((RedTankManipulator.alive == false) && (GreenTankManipulator.alive == false)))
         	OpenFinishMenu();
 	}
@@ -252,11 +261,12 @@ public class EnemyTanks : MonoBehaviour
     	finishObject.gameObject.SetActive(true);
         // Найти объект по имени
 		// Выясним выиграли мы или проиграли
-		GameObject mainEnemy = GameObject.Find("EnemyTankBlack");
-        EnemyTanks mainEnemyManipulator = mainEnemy.GetComponent<EnemyTanks>();
+		GameObject enemyManager = GameObject.Find("EnemyTankManager");
+        ManagerEnemyTanks enemyManagerManipulator = enemyManager.GetComponent<ManagerEnemyTanks>();
+        //EnemyTanks mainEnemyManipulator = mainEnemy.GetComponent<EnemyTanks>();
 
 		// взять переменную здоровья
-		int totalAlive = mainEnemyManipulator.listEnemyTanks.Count;
+		int totalAlive = enemyManagerManipulator.ListEnemyTanks.Count;
         if (totalAlive != 0){
         	manipulatorText.text = "Победа ботов в сражении!";
         }else{
