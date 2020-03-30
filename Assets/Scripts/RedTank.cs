@@ -4,7 +4,7 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 
-public class RedTank : MonoBehaviour
+public class RedTank : MonoBehaviourPunCallbacks, IPunObservable
 {
     public float speed = 1f;
     public float rotationSpeed = 100f;
@@ -26,7 +26,18 @@ public class RedTank : MonoBehaviour
 
     // Локальное представление объекта для клиента
     private PhotonView photonView;
+    public bool createBulletOnClient;
 
+    // Передача выстрела
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info){
+        if (stream.IsWriting){
+            Debug.Log("ОТПРАВКА ДАННЫХ");
+            stream.SendNext(createBulletOnClient);
+        }else{
+            Debug.Log("ПРИЕМ ДАННЫХ");
+            createBulletOnClient = (bool) stream.ReceiveNext();
+        }
+    }
 
     // Первый кадр в отрисовке танка
     void Start()
@@ -35,7 +46,6 @@ public class RedTank : MonoBehaviour
         // Найти контроллер позиции танка
         PositionController = go.GetComponent<RedTank>();
         // Инициализация локального предствления
-        Debug.Log("Получил фоотонвиев красного танка");
         photonView = GetComponent<PhotonView>();
     }
 
@@ -87,13 +97,27 @@ public class RedTank : MonoBehaviour
             Quaternion SpawnRoot = dulo.transform.rotation;
             // Quaternion SpawnRoot = bullet.transform.rotation;
             // Создание пули
-            GameObject bulletForFire = Instantiate(bullet, SpawnPoint, SpawnRoot) as GameObject;
+            GameObject bulletForFire = PhotonNetwork.Instantiate(bullet.name, SpawnPoint, SpawnRoot) as GameObject;
             // Придание ей ускорения (Rigidbody берется у bullet)
             Rigidbody Run = bulletForFire.GetComponent<Rigidbody>();
             Run.AddForce(bulletForFire.transform.up * speedBullet, ForceMode.Impulse);
             Destroy(bulletForFire, 5);
             // Выставить кулдаун
             timer = cooldown;
+            createBulletOnClient = true;
+        }
+        // Для клиента принять выстрел и отобразить его у себя
+        if (!photonView.IsMine && createBulletOnClient){
+            Vector3 SpawnPoint = dulo.transform.position;
+            Quaternion SpawnRoot = dulo.transform.rotation;
+            //GameObject bulletForFire = Instantiate(bullet, SpawnPoint, SpawnRoot) as GameObject;
+            // Придание ей ускорения (Rigidbody берется у bullet)
+            //Rigidbody Run = bulletForFire.GetComponent<Rigidbody>();
+            //Run.AddForce(bulletForFire.transform.up * speedBullet, ForceMode.Impulse);
+            //Destroy(bulletForFire, 5);
+            // Выставить кулдаун
+            timer = cooldown;
+            createBulletOnClient = false;
         }
     }
 

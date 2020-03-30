@@ -76,7 +76,7 @@ MonoBehaviour:
   cooldown: 3
   timer: 0
   enemyTankPrefab: {fileID: 6555396809987886807}
-  bullet: {fileID: 1978876333659195651, guid: a71383477548b4e6eba83b8971289da7, type: 3}
+  bullet: {fileID: 1978876333659195651, guid: 2ff78184fe003402ab743e72f548232f, type: 3}
   dulo: {fileID: 625094648}
   speedBullet: 10
   aiEnemyTank: {fileID: 2069156122}
@@ -86,8 +86,6 @@ MonoBehaviour:
   pivot: {x: 0, y: 1, z: 0}
   alive: 1
   photonView: {fileID: 0}
-  finishObject: {fileID: 0}
-  manipulatorText: {fileID: 0}
 --- !u!195 &2069156122
 NavMeshAgent:
   m_ObjectHideFlags: 0

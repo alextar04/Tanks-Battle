@@ -27,7 +27,7 @@ public class CreateGameMenu : MonoBehaviourPunCallbacks
 		// Версия игры для невозможности подключения игроков с другой версией клиента
 		PhotonNetwork.GameVersion = "1.0.0";
 		// Синхронизирование в переключении сцен (во время конца игры)
-		PhotonNetwork.AutomaticallySyncScene = true;
+		//PhotonNetwork.AutomaticallySyncScene = true;
 
 		// Подкючение к мастер-серверу
 		PhotonNetwork.ConnectUsingSettings();
@@ -50,12 +50,15 @@ public class CreateGameMenu : MonoBehaviourPunCallbacks
     }
 
     public override void OnPlayerEnteredRoom(Player player){
+    	PhotonNetwork.AutomaticallySyncScene = true;
     	PhotonNetwork.LoadLevel("GameScene");
     } 
 
 
     public void BackToMainMenu(){
-    	PhotonNetwork.Disconnect();
+    	try{
+        PhotonNetwork.Disconnect();
+        }catch{}
         SceneManager.LoadScene(0);
     }
 }

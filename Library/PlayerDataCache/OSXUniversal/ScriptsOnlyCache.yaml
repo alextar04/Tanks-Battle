@@ -326,7 +326,7 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 13494}
     - Class: 114
-      Script: {instanceID: 16768}
+      Script: {instanceID: 22108}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -711,7 +711,7 @@ ScriptsOnlyBuild:
     className: PhotonStatsGui
   - hash:
       serializedVersion: 2
-      Hash: 11bf153779937b16887c3fb1fe232c4d
+      Hash: 593dd6ba1dac682335bda57ad20f53f0
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: EnemyTanks
@@ -903,7 +903,7 @@ ScriptsOnlyBuild:
     className: GreenTank
   - hash:
       serializedVersion: 2
-      Hash: cec6623bf514a2cbe357f1494243284b
+      Hash: 53e18b75ebb7940216315fbcab1f2355
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ManagerEnemyTanks
@@ -1197,7 +1197,7 @@ ScriptsOnlyBuild:
     className: CurrentRoomIsOpenToggle
   - hash:
       serializedVersion: 2
-      Hash: cb1390dd554bbdb2b750226b9d081106
+      Hash: ab4154a9d96903057ab313fbded3e1df
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PauseMenu
@@ -1491,7 +1491,7 @@ ScriptsOnlyBuild:
     className: VerticalLayoutGroup
   - hash:
       serializedVersion: 2
-      Hash: 4eb7ec12f8c77ddd80c03c4430829ab3
+      Hash: a66a50ff462aad9211a3aaea550ec65a
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: healthRedScore
@@ -1659,7 +1659,7 @@ ScriptsOnlyBuild:
     className: ServerProperty
   - hash:
       serializedVersion: 2
-      Hash: 8966ddce2a549194886e4168a54c8325
+      Hash: a94d1fd4ec3374389031dc97b7de6fd3
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: RedTank
@@ -1911,7 +1911,7 @@ ScriptsOnlyBuild:
     className: IsConnectedAndReadyProperty
   - hash:
       serializedVersion: 2
-      Hash: 9edf6d99f771bf48677784f18b039ec0
+      Hash: 3912a4d923c7ed4c61465a3390d2aea8
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: healthGreenScore
@@ -2218,4 +2218,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/Records.unity
   - Assets/Scenes/GameScene.unity
   - Assets/Scenes/ControlScene.unity
-  playerPath: /Users/user/Documents/GitHub/Tanks_27_03.app
+  playerPath: /Users/user/Documents/GitHub/TanksBattle.app

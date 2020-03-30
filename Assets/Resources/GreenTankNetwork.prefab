@@ -75,14 +75,14 @@ MonoBehaviour:
   rotationSpeed: 100
   cooldown: 5
   timer: 0
-  bullet: {fileID: 1978876333659195651, guid: 65351b4e992a3354d92c868224e82d17, type: 3}
+  bullet: {fileID: 1978876333659195651, guid: cd54d220cab3445bfb3d07c950eb0f35, type: 3}
   dulo: {fileID: 1038063697}
   speedBullet: 8000
   healthPointTotal: 300
   healthPointCurrent: 300
   countDamage: 200
   alive: 1
-  photonView: {fileID: 0}
+  photonView: {fileID: 7217988068259013897}
 --- !u!114 &4244704640480971235
 MonoBehaviour:
   m_ObjectHideFlags: 0

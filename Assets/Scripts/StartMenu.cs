@@ -2,16 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Photon.Pun;
+using Photon.Realtime;
+
 
 public class StartMenu : MonoBehaviour
 {
     public void OpenCreateGame()
     {
+        try{
+        PhotonNetwork.Disconnect();
+        }catch{}
+
         SceneManager.LoadScene(1);
     }
 
     public void OpenJoinGame()
     {
+        try{
+        PhotonNetwork.Disconnect();
+        }catch{}
         SceneManager.LoadScene(2);
     }
 

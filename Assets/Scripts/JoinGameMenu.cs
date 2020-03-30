@@ -26,7 +26,9 @@ public class JoinGameMenu : MonoBehaviourPunCallbacks
     {
     	JoinOkServerText.SetActive(false);
     	JoinErrorServerText.SetActive(false);
-    	PhotonNetwork.Disconnect();
+    	try{
+        PhotonNetwork.Disconnect();
+        }catch{}
 
     	// Считать имя игрока из введенного поля
         nameJoinPlayerClientField = GameObject.Find("NameInputField");

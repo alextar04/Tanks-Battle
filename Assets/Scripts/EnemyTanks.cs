@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.AI;
+using UnityEngine.UI;
 using TMPro;
 using Photon.Pun;
 using Photon.Realtime;
@@ -58,24 +59,24 @@ public class EnemyTanks : MonoBehaviour
 
         RedTank = GameObject.Find("RedTankMaus");
         RedTankManipulator = RedTank.GetComponent<RedTank>();
-         while (GreenTank == null){
+         /*while (GreenTank == null){
             GreenTank = GameObject.Find("GreenTankNetwork(Clone)");
             GreenTankManipulator = GreenTank.GetComponent<GreenTank>();
-        }
+        }*/
         photonView = GetComponent<PhotonView>();
     }
 
     // Проверка на получение урона
-    /*void OnCollisionEnter(Collision myTrigger){
+    void OnCollisionEnter(Collision myTrigger){
   		if (myTrigger.gameObject.name == "firstLevelBullet(Clone)")
   		{
-    		healthPointCurrent -= 250;
+    		healthPointCurrent -= 500;
     		Debug.Log("Damaged: " + enemyTankPrefab.gameObject.name + " " + healthPointCurrent);
-    		Destroy(myTrigger.gameObject);
+    		PhotonNetwork.Destroy(myTrigger.gameObject);
   		}
 
   		if (myTrigger.gameObject.name == "fiveLevelBullet(Clone)"){
-  			Destroy(myTrigger.gameObject);
+  			PhotonNetwork.Destroy(myTrigger.gameObject);
   		}
 
   		// Бонус-аптечка
@@ -88,11 +89,30 @@ public class EnemyTanks : MonoBehaviour
             Destroy(myTrigger.gameObject);
             Debug.Log("HealthBox removed: ");
         }
+
+        // **** ДОБАВОЧКА
+        /*if ((myTrigger.gameObject.name == "firstLevelBullet(Clone)") || (myTrigger.gameObject.name == "fiveLevelBullet(Clone)"))
+        {
+        PhotonView pv = myTrigger.gameObject.GetComponent<PhotonView>();
+        // Для красного удаляет мастер,  для грина каждый сам
+        if (pv.IsMine && (pv.Owner == PhotonNetwork.PlayerList[1])){
+            PhotonNetwork.Destroy(myTrigger.gameObject);
+              Debug.Log("Bullet removed: ");
+        }
+
+        if (PhotonNetwork.IsMasterClient && (pv.Owner == PhotonNetwork.PlayerList[0])){
+          Debug.Log("Решил что я мастер: ");
+          PhotonNetwork.Destroy(myTrigger.gameObject);
+          Debug.Log("Зачем то удалил пулю мастера: ");
+        }
+      }*/
+      // **** ДОБАВОЧКА
+
 	}
 
 
 	// Генерирование стартовой позиции вражеского танка
-    Vector3 RandomPosition()
+    /*Vector3 RandomPosition()
     {
         Vector3 generatedPosition = new Vector3(2.611f, 7.05f, 1.42f);
         return generatedPosition;
@@ -141,7 +161,7 @@ public class EnemyTanks : MonoBehaviour
             Vector3 SpawnPoint = dulo.transform.position;
             Quaternion SpawnRoot = dulo.transform.rotation;
             // Создание пули
-            GameObject bulletForFire = Instantiate(bullet, SpawnPoint, SpawnRoot) as GameObject;
+            GameObject bulletForFire = PhotonNetwork.Instantiate(bullet.name, SpawnPoint, SpawnRoot) as GameObject;
             // Придание ей ускорения (Rigidbody берется у bullet)
             Rigidbody Run = bulletForFire.GetComponent<Rigidbody>();
             Run.AddForce(bulletForFire.transform.right * speedBullet, ForceMode.Impulse);
@@ -154,7 +174,30 @@ public class EnemyTanks : MonoBehaviour
 
     void Update()
     {
-        if (!photonView.IsMine) return;
+        while (GreenTank == null){
+            GreenTank = GameObject.Find("GreenTankNetwork(Clone)");
+            GreenTankManipulator = GreenTank.GetComponent<GreenTank>();
+        }
+
+
+        if (!photonView.IsMine){
+                GameObject enemyManagerClient = GameObject.Find("EnemyTankManager");
+                ManagerEnemyTanks enemyManagerClientManipulator = enemyManagerClient.GetComponent<ManagerEnemyTanks>();
+                GameObject HPGreen = GameObject.Find("healthPoint");
+                TextMeshProUGUI HPCurrentGreen = HPGreen.GetComponent<TextMeshProUGUI>();
+                GameObject HPRed = GameObject.Find("healthPointRed");
+                TextMeshProUGUI HPCurrentRed = HPRed.GetComponent<TextMeshProUGUI>();
+                // Если нечего удалять - поражение
+                if ((HPCurrentGreen.text[1] == '0') && (HPCurrentRed.text[1] == '0')){
+                        enemyManagerClientManipulator.OpenFinishMenu();
+                        return;
+                    }
+                if (enemyManagerClientManipulator.totalGenerated == 11){
+                        enemyManagerClientManipulator.OpenFinishMenu();
+                        return;
+                    }
+                return;
+            }
 
         if (timer > 0)
             timer -= Time.deltaTime;
@@ -246,13 +289,14 @@ public class EnemyTanks : MonoBehaviour
             enemyManagerManipulator.ListEnemyTanks.RemoveAt(indexRemove);
         }
         // Если нечего удалять - поражение
-        if (((enemyManagerManipulator.ListEnemyTanks.Count == 0) && (enemyManagerManipulator.totalGenerated == 10)) ||
-        		((RedTankManipulator.alive == false) && (GreenTankManipulator.alive == false)))
-        	OpenFinishMenu();
+        if (((enemyManagerManipulator.ListEnemyTanks.Count == 1) && (enemyManagerManipulator.totalGenerated == 11)) ||
+        		((RedTankManipulator.alive == false) && (GreenTankManipulator.alive == false))){
+            enemyManagerManipulator.OpenFinishMenu();
+        }
 	}
 
 
-	// Часть, связанная с окончанием игры
+	/*// Часть, связанная с окончанием игры
 	public GameObject finishObject;
     public TextMeshProUGUI manipulatorText;
 
@@ -272,7 +316,7 @@ public class EnemyTanks : MonoBehaviour
         }else{
         	manipulatorText.text = "Победа союзников в сражении!";
     	}
-	}
+	}*/
 
     public void OpenStartMenu()
     {

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 using Photon.Pun;
 using Photon.Realtime;
 
@@ -97,7 +98,7 @@ public class GreenTank : MonoBehaviourPunCallbacks
             Quaternion SpawnRoot = dulo.transform.rotation;
             // Quaternion SpawnRoot = bullet.transform.rotation;
             // Создание пули
-            GameObject bulletForFire = Instantiate(bullet, SpawnPoint, SpawnRoot) as GameObject;
+            GameObject bulletForFire = PhotonNetwork.Instantiate(bullet.name, SpawnPoint, SpawnRoot) as GameObject;
             // Придание ей ускорения (Rigidbody берется у bullet)
             Rigidbody Run = bulletForFire.GetComponent<Rigidbody>();
             Run.AddForce(bulletForFire.transform.up * speedBullet, ForceMode.Impulse);
@@ -114,6 +115,10 @@ public class GreenTank : MonoBehaviourPunCallbacks
         fire();
     }
 
+    [PunRPC]
+    void isDied(){
+        alive = false;
+    }
 
     void Update()
     {
@@ -121,14 +126,17 @@ public class GreenTank : MonoBehaviourPunCallbacks
         // if (!photonView.IsMine) return;
         // Debug.Log(photonView.ViewID);
         // if (photonView.ViewID != 2001) return;
-        if (!photonView.IsMine) return;
+        if (!photonView.IsMine){
+            if (!alive)
+                photonView.RPC("isDied", RpcTarget.All);
+                return;
+        }
 
         if (timer > 0)
             timer -= Time.deltaTime;
         else
             timer = 0;
 
-            // !PhotonNetwork.IsMasterClient
         if (alive && (PositionController.transform.position.y < 7.2f)){
             if (Input.GetKey(KeyCode.UpArrow))
             {
