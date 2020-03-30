@@ -56,7 +56,7 @@ public class RedTank : MonoBehaviourPunCallbacks, IPunObservable
         {
             healthPointCurrent -= 100;
             Debug.Log("Damaged RedTank : " + healthPointCurrent);
-            Destroy(myTrigger.gameObject);
+            PhotonNetwork.Destroy(myTrigger.gameObject);
             Debug.Log("Bullet removed: ");
             if (healthPointCurrent <= 0){
                 alive = false;

@@ -58,7 +58,7 @@ public class GreenTank : MonoBehaviourPunCallbacks
         {
             healthPointCurrent -= 100;
             Debug.Log("Damaged GreenTank : " + healthPointCurrent);
-            Destroy(myTrigger.gameObject);
+            PhotonNetwork.Destroy(myTrigger.gameObject);
             Debug.Log("Bullet removed: ");
             if (healthPointCurrent <= 0){
                 alive = false;
