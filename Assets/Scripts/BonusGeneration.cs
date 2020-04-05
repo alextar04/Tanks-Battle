@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
+using Photon.Realtime;
 
 public class BonusGeneration : MonoBehaviour
 {
@@ -15,6 +17,7 @@ public class BonusGeneration : MonoBehaviour
     public GameObject bonusPrefab;
     public GameObject healthPrefab;
     public GameObject damagePrefab;
+
 
 
     // Генерирование позиции
@@ -40,8 +43,10 @@ public class BonusGeneration : MonoBehaviour
     void NewBonusGenerate()
     {
         GameObject instantedObject;
-        instantedObject = Instantiate(RandomTypeBonus(), RandomPosition(), Quaternion.identity) as GameObject;
-        if (bonusPrefab == healthPrefab)
+        instantedObject = PhotonNetwork.Instantiate(healthPrefab.name, RandomPosition(), Quaternion.identity) as GameObject;
+        //instantedObject.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
+        //instantedObject.transform.eulerAngles = new Vector3(0.0f, -0.0f, 0.0f);
+        /*if (bonusPrefab == healthPrefab)
         {
             instantedObject.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
             instantedObject.transform.eulerAngles = new Vector3(0.0f, -90.0f, 0.0f);
@@ -50,13 +55,14 @@ public class BonusGeneration : MonoBehaviour
         {
             instantedObject.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
             instantedObject.transform.eulerAngles = new Vector3(0.0f, -90.0f, -90.0f);
-        }
+        }*/
     }
 
 
     // Отрисовка сгенерированного бонуса
     void Start()
     {
-        InvokeRepeating("NewBonusGenerate", 30, 60);
+        if (PhotonNetwork.IsMasterClient)
+            InvokeRepeating("NewBonusGenerate", 20, 40);
     }
 }
