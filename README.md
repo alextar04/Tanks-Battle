@@ -11,9 +11,8 @@ Use technology:
 
 Screenshots:
 
-![Иллюстрация к проекту](https://github.com/alextar04/Tanks-Battle/Template/1.png)
-![Иллюстрация к проекту](https://github.com/alextar04/Tanks-Battle/Template/2.png)
-![Иллюстрация к проекту](https://github.com/alextar04/Tanks-Battle/Template/3.png)
-![Иллюстрация к проекту](https://github.com/alextar04/Tanks-Battle/Template/4.png)
-![Иллюстрация к проекту](https://github.com/alextar04/Tanks-Battle/Template/5.png)
-![Иллюстрация к проекту](https://github.com/alextar04/Tanks-Battle/Template/6.png)
+![Иллюстрация к проекту](https://github.com/alextar04/Tanks-Battle/Logs/1.png)
+![Иллюстрация к проекту](https://github.com/alextar04/Tanks-Battle/Logs/2.png)
+![Иллюстрация к проекту](https://github.com/alextar04/Tanks-Battle/Logs/3.png)
+![Иллюстрация к проекту](https://github.com/alextar04/Tanks-Battle/Logs/4.png)
+![Иллюстрация к проекту](https://github.com/alextar04/Tanks-Battle/Logs/5.png)
