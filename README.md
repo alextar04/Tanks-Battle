@@ -1,4 +1,4 @@
-# tanksbattle
+# Tanks Battle
 A brief overview of the game's functionality
 The game consists of a cooperative game of two players on the network, controlling tanks against the enemy team's tanks that appear. The allied team wins if all the enemy tanks of the opposing team are destroyed. If the allies have no health left, the bots win, and the corresponding message is displayed. Next, let's take a closer look at the objects involved in the game and the interaction between them, including network interaction.
 
