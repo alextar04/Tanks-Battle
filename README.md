@@ -11,7 +11,10 @@ Use technology:
 
 Screenshots:
 
+<p align="center">
 ![Иллюстрация к проекту](https://github.com/alextar04/Tanks-Battle/blob/master/Logs/1.png)
+</p>
+
 ![Иллюстрация к проекту](https://github.com/alextar04/Tanks-Battle/blob/master/Logs/2.png)
 ![Иллюстрация к проекту](https://github.com/alextar04/Tanks-Battle/blob/master/Logs/3.png)
 ![Иллюстрация к проекту](https://github.com/alextar04/Tanks-Battle/blob/master/Logs/4.png)
